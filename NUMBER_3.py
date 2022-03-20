@@ -1,0 +1,45 @@
+import matplotlib.pyplot as plt 
+import matplotlib  
+# matplotlib.use('Agg')
+
+names = ['1', '5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60']
+
+x = range(len(names))
+Recall = [0.74, 0.83, 0.84, 0.87, 0.85, 0.85, 0.86, 0.86, 0.86, 0.88, 0.87, 0.87, 0.88]
+Fvalue = [0.77, 0.84, 0.84, 0.86, 0.86, 0.85, 0.86, 0.88, 0.86, 0.85, 0.86, 0.87, 0.88]
+Gmean = [0.78, 0.84, 0.84, 0.86, 0.87, 0.85, 0.86, 0.88, 0.86, 0.85, 0.86, 0.86, 0.88]
+
+#plt.plot(x, y, 'ro-')
+#plt.plot(x, y1, 'bo-')
+#pl.xlim(-1, 11) # 限定横轴的范围
+#pl.ylim(-1, 110) # 限定纵轴的范围
+# plt.rcParams['figure.figsize'] = (6.0, 4.0)
+
+plt.plot(x, Fvalue, marker='s', ms=6, linewidth=2, label='F-value')
+plt.plot(x, Gmean, marker='*', ms=6, linewidth=2, label='G-mean')
+plt.plot(x, Recall, marker='o', ms=6, linewidth=2, label='Recall')
+
+
+plt.legend(loc='lower right', fontsize=20) # 让图例生效
+plt.grid(axis = 'y')
+ax = plt.gca()
+ax.spines['top'].set_color('none')
+ax.spines['right'].set_color('none')
+
+plt.xticks(x, names)
+plt.margins(0.05)
+plt.yticks([0.70, 0.72, 0.74, 0.76, 0.78, 0.80, 0.82, 0.84, 0.86, 0.88, 0.90])
+plt.subplots_adjust(bottom=0.05)
+
+font2 = {'family' : 'Times New Roman',
+'weight' : 'normal',
+'size'   : 10,
+}
+plt.xlabel("Number of base classifiers(The sampling rate of sub-dataset is set to 40%)",font2) #X轴标签
+plt.ylabel("Average value of final outputs",font2) #Y轴标签
+# plt.title("A simple plot") #标题
+plt.tight_layout()
+
+# plt.savefig("../result/number4.png")
+
+plt.show()
